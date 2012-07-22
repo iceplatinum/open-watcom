@@ -1,4 +1,4 @@
-#pmake: buildwcl os_nt cpu_386 target_ppc
+#pmake: build os_nt cpu_386 target_ppc
 
 host_os  = nt
 host_cpu = 386

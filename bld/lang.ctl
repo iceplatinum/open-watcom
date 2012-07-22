@@ -23,7 +23,7 @@ echo Bootstrapping compiler using GNU tools...
 [ INCLUDE <DEVDIR>/cpp/prereq.ctl ]
 [ INCLUDE <DEVDIR>/pmake/prereq.ctl ]
 [ INCLUDE <DEVDIR>/nwlib/prereq.ctl ]
-[ INCLUDE <DEVDIR>/cc/wcl/prereq.ctl ]
+[ INCLUDE <DEVDIR>/wcl/prereq.ctl ]
 [ INCLUDE <DEVDIR>/wasm/prereq.ctl ]
 [ INCLUDE <DEVDIR>/causeway/prereq.ctl ]
 [ BLOCK .<BUILDMODE>. .. ]
@@ -121,7 +121,7 @@ echo Bootstrapping compiler using GNU tools...
 [ INCLUDE <DEVDIR>/cg/lang.ctl ]
 #        C front ends must be built after code generator
 [ INCLUDE <DEVDIR>/cc/lang.ctl ]
-[ INCLUDE <DEVDIR>/cc/wcl/lang.ctl ]
+[ INCLUDE <DEVDIR>/wcl/lang.ctl ]
 [ INCLUDE <DEVDIR>/plusplus/lang.ctl ]
 [ INCLUDE <DEVDIR>/fe_misc/lang.ctl ]
 #        FORTRAN 77 compilers must be built after code generators

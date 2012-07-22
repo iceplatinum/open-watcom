@@ -32,7 +32,7 @@ set WLINK_LNK=bootstrp.lnk
 [ INCLUDE <DEVDIR>/clib/lang.ctl ]
 [ INCLUDE <DEVDIR>/mathlib/lang.ctl ]
 [ INCLUDE <DEVDIR>/emu/lang.ctl ]
-[ INCLUDE <DEVDIR>/cc/wcl/prereq.ctl ]
+[ INCLUDE <DEVDIR>/wcl/prereq.ctl ]
 [ INCLUDE <DEVDIR>/cfloat/lang.ctl ]
 [ INCLUDE <DEVDIR>/owl/lang.ctl ]
 [ INCLUDE <DEVDIR>/dwarf/lang.ctl ]
@@ -43,11 +43,11 @@ set WLINK_LNK=bootstrp.lnk
 [ INCLUDE <DEVDIR>/cc/lang.ctl ]
 [ INCLUDE <DEVDIR>/plusplus/lang.ctl ]
 [ INCLUDE <DEVDIR>/cpplib/lang.ctl ]
-[ INCLUDE <DEVDIR>/cc/wcl/lang.ctl ]
+[ INCLUDE <DEVDIR>/wcl/lang.ctl ]
 
 [ BLOCK <1> rel2 cprel2 ]
-    <CPCMD> <DEVDIR>/cc/wcl/linux386.386/wcl386.exe    <OWBINDIR>/wcl386
-    <CPCMD> <DEVDIR>/cc/wcl/linux386.i86/wcl.exe       <OWBINDIR>/wcl
+    <CPCMD> <DEVDIR>/wcl/linux386.386/wcl386.exe    <OWBINDIR>/wcl386
+    <CPCMD> <DEVDIR>/wcl/linux386.i86/wcl.exe       <OWBINDIR>/wcl
     <CPCMD> <DEVDIR>/cc/linux386.386/wcc386c.exe       <OWBINDIR>/wcc386
     <CPCMD> <DEVDIR>/plusplus/linux386.386/wcpp386.exe <OWBINDIR>/wpp386
     <CPCMD> <DEVDIR>/plusplus/linux386.i86/wcppi86.exe <OWBINDIR>/wpp
@@ -81,7 +81,7 @@ set WLINK_LNK=
     rm -rf <DEVDIR>/dwarf/dw/<OBJDIR>
     rm -rf <DEVDIR>/cg/intel/386/<OBJDIR>
     rm -rf <DEVDIR>/cc/<OBJDIR>
-    rm -rf <DEVDIR>/cc/wcl/<OBJDIR>
+    rm -rf <DEVDIR>/wcl/<OBJDIR>
     rm -rf <DEVDIR>/wasm/<OBJDIR>
     rm -rf <DEVDIR>/wl/<OBJDIR>
 
