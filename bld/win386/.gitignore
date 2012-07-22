@@ -2,3 +2,4 @@ dllthk.asm
 winglue.asm
 dllthunk.c
 winglue.inc
+*.386

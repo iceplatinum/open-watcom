@@ -22,7 +22,6 @@
 *.err
 *.lo?
 *.ext
-*.386
 *.dip
 *.prs
 *.mad
