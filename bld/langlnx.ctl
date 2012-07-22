@@ -42,7 +42,7 @@ set WLINK_LNK=bootstrp.lnk
 [ INCLUDE <DEVDIR>/cg/lang.ctl ]
 [ INCLUDE <DEVDIR>/cc/lang.ctl ]
 [ INCLUDE <DEVDIR>/plusplus/lang.ctl ]
-[ INCLUDE <DEVDIR>/plusplus/cpplib/lang.ctl ]
+[ INCLUDE <DEVDIR>/cpplib/lang.ctl ]
 [ INCLUDE <DEVDIR>/cc/wcl/lang.ctl ]
 
 [ BLOCK <1> rel2 cprel2 ]

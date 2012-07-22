@@ -134,7 +134,7 @@ echo Bootstrapping compiler using GNU tools...
 #        Now we can build the C++ libraries - must be done after C library
 #        as well as after the C++ compilers
 #
-[ INCLUDE <DEVDIR>/plusplus/cpplib/lang.ctl ]
+[ INCLUDE <DEVDIR>/cpplib/lang.ctl ]
 [ INCLUDE <DEVDIR>/wclass/lang.ctl ]
 #        rtdll must be made after all other libraries
 #[ INCLUDE <DEVDIR>/rtdll/lang.ctl ]
