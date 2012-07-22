@@ -60,7 +60,7 @@ uint_32 DoOp32( uint_32 left, opr_code opr, uint_32 right, bool sign )
         }
         break;
     case OPR_MOD:
-        if( right == 0 ) {                 /* 10-mar-90 */
+        if( right == 0 || right == -1 || right == 1 ) {
             value = 0;
         } else {
             if( sign ) {

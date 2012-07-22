@@ -861,6 +861,8 @@ static PTREE foldInt( CGOP op, PTREE left, target_long v2 )
         if( v2 == 0 ) {
             CErr1( ERR_DIVISION_BY_ZERO );
             v1 = 1;
+        } else if( v2 == -1 || v2 == 1 ) {
+            v1 = 0;
         } else {
             v1 %= v2;
         }
