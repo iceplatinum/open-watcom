@@ -218,6 +218,13 @@ static void seg_override( asm_token seg_reg, asm_sym *sym )
 #if defined( _STANDALONE_ )
     enum assume_reg     assume_seg;
 
+    if( Code->info.token == T_LEA ) {
+        Code->prefix.seg = EMPTY;
+        if( sym != NULL ) {
+            find_frame( sym );
+        }
+        return;
+    }
     switch( seg_reg ) {
     case T_SS:
     case T_BP:
@@ -230,11 +237,7 @@ static void seg_override( asm_token seg_reg, asm_sym *sym )
     }
     if( sym != NULL ) {
         if( Code->prefix.seg == EMPTY ) {
-            if( Code->info.token == T_LEA ) {
-                check_assume( sym, EMPTY );
-            } else {
-                check_assume( sym, default_seg );
-            }
+            check_assume( sym, default_seg );
         } else {
             switch( Code->prefix.seg ) {
             case PREFIX_ES:
@@ -268,7 +271,9 @@ static void seg_override( asm_token seg_reg, asm_sym *sym )
         Code->prefix.seg = EMPTY;
     }
 #else
-    if( Code->prefix.seg != EMPTY ) {
+    if( Code->info.token == T_LEA ) {
+        Code->prefix.seg = EMPTY;
+    } else if( Code->prefix.seg != EMPTY ) {
         switch( seg_reg ) {
         case T_SS:
         case T_BP:
