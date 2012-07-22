@@ -1,0 +1,15 @@
+*.o
+*.obj
+*.obx
+*.exe
+*.dll
+*.lib
+*.lbc
+*.imp
+*.def
+*.rtp
+*.d32
+*.lst
+*.map
+*.sym
+
