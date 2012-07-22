@@ -1402,6 +1402,7 @@ void Statement( void )
 #endif
         case T___ASM:
             AsmStmt();
+            if( BlockStack->block_type != T_LEFT_BRACE ) break;
             continue;
         default:
             if( DeadCode == 1 ) {
