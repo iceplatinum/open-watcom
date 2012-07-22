@@ -1,6 +1,6 @@
 *.o
 *.obj
-*.obx
+*.xbj
 *.exe
 *.dll
 *.lib
@@ -12,4 +12,7 @@
 *.lst
 *.map
 *.sym
+ytab.c
+ytab.h
+
 
