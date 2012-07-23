@@ -15,23 +15,23 @@ set ODIR=<PREOBJDIR>
 
 [ BLOCK <1> clean ]
 #==================
-    echo rm -f -r <PROJDIR>/rc/<ODIR>
-    rm -f -r <PROJDIR>/rc/<ODIR>
+    echo rm -f -r <PROJDIR>/<ODIR>
+    rm -f -r <PROJDIR>/<ODIR>
     rm -f <OWBINDIR>/wrc<CMDEXT>
     rm -f <OWBINDIR>/bwrc<CMDEXT>
     set BUILD_PLATFORM=
 
 [ BLOCK <BUILD_PLATFORM> dos386 nt386 ntaxp os2386 linux386 ]
 #================================
-    mkdir <PROJDIR>/rc/<PREOBJDIR>
-    cdsay <PROJDIR>/rc/<PREOBJDIR>
-    wmake -h -f ../ <BUILD_PLATFORM>/makefile prebuild=1
+    mkdir <PROJDIR>/<PREOBJDIR>
+    cdsay <PROJDIR>/<PREOBJDIR>
+    wmake -h -f ../<BUILD_PLATFORM>/makefile prebuild=1
     <CPCMD> wrce.exe <OWBINDIR>/bwrc<CMDEXT>
 
 [ BLOCK <BUILD_PLATFORM> linux386boot ]
 #======================================
-    mkdir <PROJDIR>/rc/<OBJDIR>
-    cdsay <PROJDIR>/rc/<OBJDIR>
+    mkdir <PROJDIR>/<OBJDIR>
+    cdsay <PROJDIR>/<OBJDIR>
     wmake -h -f ../linux386/makefile bootstrap=1
     <CPCMD> wrce.exe <OWBINDIR>/bwrc<CMDEXT>
 

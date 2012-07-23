@@ -5,6 +5,8 @@ name = sample
 !include defrule.mif
 !include deftarg.mif
 
+!include wres.mif
+
 LNK=sample.lnk
 
 !ifeq type win
@@ -83,8 +85,8 @@ $(LNK): $(__makefiles__)
 !ifdef extra_lib
         @%append $(LNK) library $(extra_lib)
 !endif
-!ifdef wreslib
-        @%append $(LNK) library $(wreslib)
+!ifdef wres_lib
+        @%append $(LNK) library $(wres_lib)
 !endif
         @for %i in ($(objs)) do @%append $(LNK) file %i
 !ifneq type win

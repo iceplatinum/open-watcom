@@ -44,7 +44,7 @@ echo Bootstrapping compiler using GNU tools...
 [ INCLUDE <DEVDIR>/posix/prereq.ctl ]
 #        Prebuild wres.lib and new WRC with OS/2 support for build process
 [ INCLUDE <DEVDIR>/wres/prereq.ctl ]
-[ INCLUDE <DEVDIR>/rc/prereq.ctl ]
+[ INCLUDE <DEVDIR>/rc/rc/prereq.ctl ]
 #        Prebuild parsedlg tool for build process
 [ INCLUDE <DEVDIR>/parsedlg/prereq.ctl ]
 #
