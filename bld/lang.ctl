@@ -43,7 +43,8 @@ echo Bootstrapping compiler using GNU tools...
 #        Prebuild POSIX tools for build process
 [ INCLUDE <DEVDIR>/posix/prereq.ctl ]
 #        Prebuild wres.lib and new WRC with OS/2 support for build process
-[ INCLUDE <DEVDIR>/sdk/rc/prereq.ctl ]
+[ INCLUDE <DEVDIR>/wres/prereq.ctl ]
+[ INCLUDE <DEVDIR>/rc/prereq.ctl ]
 #        Prebuild parsedlg tool for build process
 [ INCLUDE <DEVDIR>/parsedlg/prereq.ctl ]
 #
@@ -58,11 +59,14 @@ echo Bootstrapping compiler using GNU tools...
 #
 #        Next step, build libraries used by various projects
 #
-#        RC builds resource file libraries for everybody
-[ INCLUDE <DEVDIR>/fmedit/lang.ctl ]
+[ INCLUDE <DEVDIR>/wres/lang.ctl ]
+#
 #        WPI and commonui needs to be done before SDK
 [ INCLUDE <DEVDIR>/wpi/lang.ctl ]
 [ INCLUDE <DEVDIR>/commonui/lang.ctl ]
+#
+#        first Resource compiler
+[ INCLUDE <DEVDIR>/rc/lang.ctl ]
 #
 #        SDK must be done after DISASM?
 [ INCLUDE <DEVDIR>/sdk/lang.ctl ]

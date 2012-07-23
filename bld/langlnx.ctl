@@ -16,7 +16,7 @@ set WLINK_LNK=bootstrp.lnk
 
 # compiled using wmake + gcc + ar/wlib
 [ INCLUDE <DEVDIR>/yacc/prereq.ctl ]
-[ INCLUDE <DEVDIR>/sdk/rc/prereq.ctl ]
+[ INCLUDE <DEVDIR>/rc/prereq.ctl ]
 [ INCLUDE <DEVDIR>/wstrip/prereq.ctl ]
 [ INCLUDE <DEVDIR>/orl/prereq.ctl ]
 [ INCLUDE <DEVDIR>/cfloat/prereq.ctl ]
@@ -37,7 +37,7 @@ set WLINK_LNK=bootstrp.lnk
 [ INCLUDE <DEVDIR>/owl/lang.ctl ]
 [ INCLUDE <DEVDIR>/dwarf/lang.ctl ]
 [ INCLUDE <DEVDIR>/re2c/prereq.ctl ]
-[ INCLUDE <DEVDIR>/sdk/rc/wres/prereq.ctl ]
+[ INCLUDE <DEVDIR>/wres/prereq.ctl ]
 [ INCLUDE <DEVDIR>/as/lang.ctl ]
 [ INCLUDE <DEVDIR>/cg/lang.ctl ]
 [ INCLUDE <DEVDIR>/cc/lang.ctl ]
@@ -58,7 +58,7 @@ set WLINK_LNK=
 
 # create full-featured wmake...
 
-[ INCLUDE <DEVDIR>/sdk/rc/prereq.ctl ]
+[ INCLUDE <DEVDIR>/rc/prereq.ctl ]
 [ INCLUDE <DEVDIR>/orl/lang.ctl ]
 [ INCLUDE <DEVDIR>/wmake/prereq.ctl ]
 
@@ -69,8 +69,8 @@ set WLINK_LNK=
     rm -rf <DEVDIR>/pmake/<OBJDIR>
     rm -rf <DEVDIR>/cpp/<OBJDIR>
     rm -rf <DEVDIR>/yacc/<OBJDIR>
-    rm -rf <DEVDIR>/sdk/rc/wres/<OBJDIR>
-    rm -rf <DEVDIR>/sdk/rc/rc/<OBJDIR>
+    rm -rf <DEVDIR>/wres/<OBJDIR>
+    rm -rf <DEVDIR>/rc/rc/<OBJDIR>
     rm -rf <DEVDIR>/wstrip/<OBJDIR>
     rm -rf <DEVDIR>/wmake/<OBJDIR>
 

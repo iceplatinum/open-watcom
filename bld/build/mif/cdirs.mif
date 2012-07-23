@@ -66,7 +66,7 @@ wimgedit_dir    = $(sdk_dir)/imgedit
 wspy_dir        = $(sdk_dir)/spy
 !endif
 !ifndef wrc_dir
-wrc_dir         = $(sdk_dir)/rc/rc
+wrc_dir         = $(dev_dir)/rc/rc
 !endif
 !ifndef wr_dir
 wr_dir          = $(sdk_dir)/wr
@@ -210,7 +210,7 @@ trap_dir        = $(dev_dir)/trap
 browse_dir      = $(dev_dir)/browser
 !endif
 !ifndef wres_dir
-wres_dir        = $(dev_dir)/sdk/rc/wres
+wres_dir        = $(dev_dir)/wres
 !endif
 !ifndef wedit_dir
 wedit_dir       = $(dev_dir)/wedit
@@ -312,7 +312,7 @@ debugger_dir    = $(dev_dir)/debugger
 re2c_dir        = $(dev_dir)/re2c
 !endif
 !ifndef fmedit_dir
-fmedit_dir      = $(dev_dir)/fmedit
+fmedit_dir      = $(dev_dir)/sdk/fmedit
 !endif
 !ifndef uninstal_dir
 uninstal_dir    = $(dev_dir)/uninstal
@@ -396,7 +396,7 @@ wimgedit_dir    = $(sdk_dir)\imgedit
 wspy_dir        = $(sdk_dir)\spy
 !endif
 !ifndef wrc_dir
-wrc_dir         = $(sdk_dir)\rc\rc
+wrc_dir         = $(dev_dir)\rc\rc
 !endif
 !ifndef wr_dir
 wr_dir          = $(sdk_dir)\wr
@@ -540,7 +540,7 @@ trap_dir        = $(dev_dir)\trap
 browse_dir      = $(dev_dir)\browser
 !endif
 !ifndef wres_dir
-wres_dir        = $(dev_dir)\sdk\rc\wres
+wres_dir        = $(dev_dir)\wres
 !endif
 !ifndef wedit_dir
 wedit_dir       = $(dev_dir)\wedit
@@ -642,7 +642,7 @@ re2c_dir        = $(dev_dir)\re2c
 cw_dir          = $(dev_dir)\causeway
 !endif
 !ifndef fmedit_dir
-fmedit_dir      = $(dev_dir)\fmedit
+fmedit_dir      = $(dev_dir)\sdk\fmedit
 !endif
 !ifndef uninstal_dir
 uninstal_dir    = $(dev_dir)\uninstal
