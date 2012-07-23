@@ -488,33 +488,35 @@ print REPORT "=====================================\n\n";
 # Do a p4 sync to get the latest changes.
 #########################################
 
-p4_sync();
+if ($Common::config{'OWCVS'} eq "p4") {
+    p4_sync();
 
-get_prev_changeno;
+    get_prev_changeno;
     
-if ($prev_changeno > 0) {
-   print REPORT "\tBuilt through change   : $prev_changeno on $prev_report_stamp\n";
-} else {
-   $prev_changeno = -1; # no previous changeno / build
-}
+    if ($prev_changeno > 0) {
+       print REPORT "\tBuilt through change   : $prev_changeno on $prev_report_stamp\n";
+    } else {
+       $prev_changeno = -1; # no previous changeno / build
+    }
     
-open(LEVEL, "p4 counters|");
-while (<LEVEL>) {
-  if (/^change = (.*)/) {
-     if ($prev_changeno eq $1) {
-        $build_needed = 0;
-        print REPORT "\tNo source code changes, build not needed\n";
-     } else {
-        $prev_changeno = $1;
-        print REPORT "\tBuilding through change: $1\n";
-     }
-  }
-}
-close(LEVEL);
-print REPORT "\n";
-if (!$build_needed) { # nothing changed, don't waste computer time
-    close(REPORT);
-    exit 0;
+    open(LEVEL, "p4 counters|");
+    while (<LEVEL>) {
+      if (/^change = (.*)/) {
+         if ($prev_changeno eq $1) {
+            $build_needed = 0;
+            print REPORT "\tNo source code changes, build not needed\n";
+         } else {
+            $prev_changeno = $1;
+            print REPORT "\tBuilding through change: $1\n";
+         }
+      }
+    }
+    close(LEVEL);
+    print REPORT "\n";
+    if (!$build_needed) { # nothing changed, don't waste computer time
+        close(REPORT);
+        exit 0;
+    }
 }
 
 ############################################################
@@ -575,7 +577,9 @@ my $docs_result = run_docs_build();
 # Display p4 sync messages for reference.
 ##########################################
 
-display_p4_messages();
+if ($Common::config{'OWCVS'} eq "p4") {
+    display_p4_messages();
+}
 
 set_prev_changeno( $prev_changeno, $date_stamp );  #remember changeno and date
 

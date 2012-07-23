@@ -35,3 +35,6 @@ BLDLAST2=bldlast2.txt
 BLDBASED=bldbased.txt
 # File holding the most recent build results for documentation build. Relative to HOME.
 BLDLASTD=bldlastd.txt
+
+# CVS version
+OWCVS=p4
