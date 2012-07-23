@@ -51,15 +51,9 @@ typedef struct msgtxt {
 msgtxt txtmsgs[] = {
 #define pick(num,etext,jtext) {num,etext},
 #include "../h/asmshare.msg"
-#undef pick
-#define pick(num,etext,jtext) {num,etext},
 #include "../h/womp.msg"
-#undef pick
-#define pick(num,etext,jtext) {num,etext},
 #include "../h/wasm.msg"
-#undef pick
-#define pick(num,text) {num,text},
-#include "usage.msg"
+#include "usage.gh"
 #undef pick
 };
 

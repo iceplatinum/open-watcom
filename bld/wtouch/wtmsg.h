@@ -36,9 +36,6 @@
 
 #define MSG_LANG_SPACING        1000
 
-#define MSG_USE_E_BASE  (MSG_USE_BASE + RLE_ENGLISH*MSG_LANG_SPACING)
-#define MSG_USE_J_BASE  (MSG_USE_BASE + RLE_JAPANESE*MSG_LANG_SPACING)
-
 #include "msg.gh"
 
 // #define      MSG_NO_TIME_STAMP       16

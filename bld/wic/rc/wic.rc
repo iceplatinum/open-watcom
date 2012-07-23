@@ -14,7 +14,7 @@ BEGIN
         (code+RLE_JAPANESE*MSG_LANG_SPACING), string2
 #include "../rc/wic.msg"
 
-#include "usagee.rc"
-#include "usagej.rc"
+#include "usagee.gh"
+#include "usagej.gh"
 
 END

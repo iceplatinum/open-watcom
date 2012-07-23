@@ -1,7 +1,6 @@
 *.o
 *.[oxu]bj
 *.exe
-#*.dll
 *.lib
 *.lbc
 *.imp

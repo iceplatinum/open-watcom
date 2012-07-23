@@ -34,14 +34,11 @@
 
 typedef char *  MACADDR_T;       /* contains actual pointer to block of memory */
 
-#ifdef pick
-#undef pick
-#endif
-
-#define pick( s, i, f )    i,
 enum special_macros {
-#include "specmac.h"
+    #define pick( s, i, f )    i,
+    #include "specmac.h"
     MACRO_MAX
+    #undef pick
 };
 
 typedef enum {                          // kind of macro scanning

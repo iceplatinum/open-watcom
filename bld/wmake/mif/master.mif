@@ -106,25 +106,24 @@ $(xname).$(ext) :: usageend.gh wmake.res $(objs) $(libs) $(version_res_$(host_os
 !ifdef version_res_$(host_os)_$(host_cpu)
         $(rc) -k $(version_res_$(host_os)_$(host_cpu)) $^@
 !endif
-
 #
 # If the linker files were different (i.e. if we needed a QNX version),
 # the copy would be replaced by a separate link. CSK
         wstrip -q -a -r $(xname).$(ext) . wmake.res
 
-wmake.res : ../h/wmake.rc mrcmsg.h usage.rc usagej.rc
+wmake.res : ../h/wmake.rc mrcmsg.h usage.gh usagej.gh
         $(rc_aui) $(extra_rc_flags) $[@ -fo=$^@
 
-usage.rc : ../h/usage.sp
-        @%write usage.tmp -kIS_RC -kENGLISH -f "%+(MSG_USE_E_BASE+%$#-1), \"%s\"" $< -o "%n%n%n%n" $^@
+usage.gh : ../h/usage.sp
+        @%write usage.tmp -kIS_RC -kENGLISH -f "pick(%+(USAGE_BASE+%$#-1), \"%s\", \"\")" $< -o "%n%n%n%n" $^@
         wsplice @usage.tmp
 
-usagej.rc : ../h/usage.sp
-        @%write usage.tmp -kIS_RC -kJAPANESE -f "%+(MSG_USE_J_BASE+%$#-1), \"%s\"" $< -o "%n%n%n%n" $^@
+usagej.gh : ../h/usage.sp
+        @%write usage.tmp -kIS_RC -kJAPANESE -f "pick(%+(USAGE_BASE+%$#-1), \"\", \"%s\")" $< -o "%n%n%n%n" $^@
         wsplice @usage.tmp
 
-usageend.gh : usage.rc usagej.rc
-        @%write usage.tmp -f "%+" usage.rc -o "$#define USAGE_LAST (USAGE_BASE+%$#)%n" $^@
+usageend.gh : usage.gh usagej.gh
+        @%write usage.tmp -f "%+" usage.gh -o "$#define USAGE_LAST (USAGE_BASE+%$#)%n" $^@
         wsplice @usage.tmp
 
 # usage.h : ..\h\usage.sp
