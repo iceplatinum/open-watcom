@@ -31,6 +31,11 @@
 *.mk1
 *.lk1
 
+*.OUT
+*.out
+*.dis
+*.dib
+
 /rel2/
 /pass1/
 /pass2/
