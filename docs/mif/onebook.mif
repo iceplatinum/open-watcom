@@ -338,7 +338,7 @@ $(hbook).ps : $(book_objs) $(book_objs_ps) $(proj_objs)
 
 .bmp.ps:
     @if not exist tmp mkdir tmp
-    bmp2eps -c $< tmp/$^@
+    bmp2eps -c $< tmp/$^.
 
 ####################################################
 #
