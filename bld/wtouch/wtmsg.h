@@ -31,10 +31,10 @@
 
 /* wtouch error messages */
 
-#define MSG_RC_BASE 0
-#define MSG_USE_BASE 500
+#define MSG_RC_BASE         0
+#define MSG_USAGE_BASE      500
 
-#define MSG_LANG_SPACING        1000
+#define MSG_LANG_SPACING    1000
 
 #include "msg.gh"
 
@@ -43,7 +43,7 @@
 // #define      MSG_USAGE_LN_0          64
 // #define      MSG_USAGE_DATE_FORM     80
 
-#define MAX_RESOURCE_SIZE       128
+#define MAX_RESOURCE_SIZE   128
 
 
 typedef struct table_type {

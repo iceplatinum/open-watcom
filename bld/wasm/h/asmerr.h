@@ -73,7 +73,7 @@ extern void             AsmNote( int level, int msgnum, ... );
     #define MSG_SHARE_RC_BASE   1
     #define MSG_WOMP_RC_BASE    200
     #define MSG_WASM_RC_BASE    500
-    #define MSG_USE_BASE        900
+    #define MSG_USAGE_BASE      900
 
     extern int MsgInit( void );
     extern int MsgGet( int, char * );

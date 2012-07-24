@@ -34,7 +34,6 @@
 
 #define MSG_SHARE_RC_BASE   1
 #define MSG_WD_RC_BASE      500
-#define MSG_USE_BASE        900
+#define MSG_USAGE_BASE      900
 
 #define MSG_LANG_SPACING    1000
-

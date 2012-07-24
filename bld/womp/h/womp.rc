@@ -13,23 +13,21 @@
  */
 
 #include "wpmsg.h"
+#include "wreslang.h"
 
 STRINGTABLE
 BEGIN
 
-#undef pick
-#if defined( JAPANESE )
-# define pick( code, string1, string2 ) code, string2
-#else
-# define pick( code, string1, string2 ) code, string1
-#endif
-
+#define pick( code, string1, string2 )  \
+        (code+RLE_ENGLISH*MSG_LANG_SPACING), string1
 #include "..\womp.msg"
+#include "usage.gh"
+#undef pick
 
-#if defined( JAPANESE )
-#include "usagej.rc"
-#else
-#include "usage.rc"
-#endif
+#define pick( code, string1, string2 )  \
+        (code+RLE_JAPANESE*MSG_LANG_SPACING), string2
+#include "..\womp.msg"
+#include "usagej.gh"
+#undef pick
 
 END

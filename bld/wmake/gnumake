@@ -21,11 +21,11 @@ $(OBJDIR)/wsplice: $(OBJDIR)/wsplice.o $(OBJDIR)/clibext.o
 	$(CC) -g $^ -o $@
 
 $(OBJDIR)/usage.gh : h/usage.sp $(OBJDIR)/wsplice
-	$(OBJDIR)/wsplice -kIS_RC -kENGLISH -f '{%+(MSG_USE_E_BASE+%#-1), "%s"},' $< $@
+	$(OBJDIR)/wsplice -kIS_RC -kENGLISH -f 'pick(%+(MSG_USAGE_BASE+%#-1), "%s", "")' $< $@
 
 $(OBJDIR)/usageend.gh: $(OBJDIR)/usage.gh $(OBJDIR)/wsplice
 	$(OBJDIR)/wsplice $< -o "%n%n%n%n" $(OBJDIR)/usage.rcp
-	$(OBJDIR)/wsplice -f "%+" $(OBJDIR)/usage.rcp -o "#define USAGE_LAST (USAGE_BASE+%#)%n" $@
+	$(OBJDIR)/wsplice -f "%+" $(OBJDIR)/usage.rcp -o "#define MSG_USAGE_LAST (MSG_USAGE_BASE+%#)%n" $@
 	rm -f $(OBJDIR)/usage.rcp
 
 $(OBJDIR)/cretype : cretype.c

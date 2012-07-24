@@ -169,7 +169,7 @@ STATIC void usage( void ) {
     int         i;
 
     header();
-    for( i = MSG_USE_BASE;; i++ ) {
+    for( i = MSG_USAGE_BASE;; i++ ) {
         MsgGet( i, msgbuff );
         if( ( msgbuff[ 0 ] == '.' ) && ( msgbuff[ 1 ] == 0 ) ) break;
         if( previous_null ) {

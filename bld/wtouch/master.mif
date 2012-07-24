@@ -33,11 +33,11 @@ $(proj_name).res : $(proj_name).rc $(proj_name).msg usage.gh usagej.gh msg.gh
         $(rc_aui) $[@ -fo=$^@
 
 usage.gh : usage.sp
-        @%write $^&.tmp -kIS_RC -kENGLISH -t8 -f "pick(%+(MSG_USE_BASE+%$#-1), \"%s\", \"\")" $< $^@
+        @%write $^&.tmp -kIS_RC -kENGLISH -t8 -f "pick(%+(MSG_USAGE_BASE+%$#-1), \"%s\", \"\")" $< $^@
         wsplice @$^&.tmp
 
 usagej.gh : usage.sp
-        @%write $^&.tmp -kIS_RC -kJAPANESE -t8 -f "pick(%+(MSG_USE_BASE+%$#-1), \"\", \"%s\")" $< $^@
+        @%write $^&.tmp -kIS_RC -kJAPANESE -t8 -f "pick(%+(MSG_USAGE_BASE+%$#-1), \"\", \"%s\")" $< $^@
         wsplice @$^&.tmp
 
 msg.gh : $(proj_name).msg

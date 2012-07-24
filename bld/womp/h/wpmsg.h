@@ -32,12 +32,14 @@
 
 /* womp error and warning messages */
 
-#define MSG_RC_BASE 16
-#define MSG_USE_BASE 200
+#define MSG_RC_BASE         16
+#define MSG_USAGE_BASE      200
+
+#define MSG_LANG_SPACING    1000
 
 #include "wmpmsg.gh"
 
-#define MAX_RESOURCE_SIZE       128
+#define MAX_RESOURCE_SIZE   128
 
 extern int MsgInit( char *fname );
 extern void MsgGet( int resourceid, char *buffer );

@@ -164,11 +164,11 @@ wmpmsg.gh : ../h/womp.msg
         $(awk) -v base=MSG_WOMP_RC_BASE -f $(misc_dir)/makemsg.awk $[@ > $^@
 
 usage.gh : usage.u
-        @%write $^&.tmp -t8 -f "pick((MSG_USE_BASE+%$#%+), \"%s\", \"\")" $< $^@
+        @%write $^&.tmp -t8 -f "pick((MSG_USAGE_BASE+%$#%+), \"%s\", \"\")" $< $^@
         wsplice @$^&.tmp
 
 usagej.gh : usagej.u
-        @%write $^&.tmp -t8 -f "pick((MSG_USE_BASE+%$#%+), \"\", \"%s\")" $< $^@
+        @%write $^&.tmp -t8 -f "pick((MSG_USAGE_BASE+%$#%+), \"\", \"%s\")" $< $^@
         wsplice @$^&.tmp
 
 ./optencod.exe: $(fe_misc_dir)/c/optencod.c
