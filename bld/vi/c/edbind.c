@@ -39,28 +39,19 @@
 #include <malloc.h>
 #include <sys/stat.h>
 #include "banner.h"
-
-char    magic_cookie[] = "CGEXXX";
-
-#define MAGIC_COOKIE_SIZE sizeof( magic_cookie )
+#include "bnddata.h"
+#include "bool.h"
 
 #define isWSorCtrlZ(x)  (isspace( x ) || (x == 0x1A))
 
 #define MAX_LINE_LEN    1024
-#define FALSE           0
-#define TRUE            1
 #define COPY_SIZE       0x8000 - 512
 #define MAX_DATA_FILES  255
 
-char    *dats[MAX_DATA_FILES];
+typedef unsigned short ushort;
 
-short   FileCount;
-long    *index;
-short   *entries;
 short   sflag = FALSE;
 short   qflag = FALSE;
-char    _bf[] = "edbind.dat";
-char    *bindfile = _bf;
 
 void Banner( void )
 {
@@ -109,9 +100,9 @@ void MyPrintf( char *str, ... )
 void AddDataToEXE( char *exe, char *buffer, unsigned short len, unsigned long tocopy )
 {
     int                 h, i, newh;
-    char                buff[MAGIC_COOKIE_SIZE + 3];
+    char                buff[sizeof( MAGIC_COOKIE ) + sizeof( bnd_unsigned )];
     long                shift;
-    short               taillen;
+    unsigned            taillen;
     char                *copy;
     char                foo[128];
     char                drive[_MAX_DRIVE], dir[_MAX_DIR];
@@ -138,11 +129,11 @@ void AddDataToEXE( char *exe, char *buffer, unsigned short len, unsigned long to
     /*
      * get trailer
      */
-    i = lseek( h, -((long)MAGIC_COOKIE_SIZE + 3L), SEEK_END );
+    i = lseek( h, -((long)sizeof( buff )), SEEK_END );
     if( i == -1 ) {
         Abort( "Initial seek error on \"%s\"", exe );
     }
-    i = read( h, buff, 3 + MAGIC_COOKIE_SIZE );
+    i = read( h, buff, sizeof( buff ) );
     if( i == -1 ) {
         Abort( "Read error on \"%s\"", exe );
     }
@@ -151,13 +142,13 @@ void AddDataToEXE( char *exe, char *buffer, unsigned short len, unsigned long to
      * if trailer is one of ours, then set back to overwrite data;
      * else just set to write at end of file
      */
-    if( strcmp( buff, magic_cookie ) ) {
+    if( strcmp( buff, MAGIC_COOKIE ) ) {
         if( sflag ) {
             Abort( "\"%s\" does not contain configuration data!", exe );
         }
     } else {
-        taillen = *( (unsigned short *)&(buff[MAGIC_COOKIE_SIZE + 1]) );
-        shift = (long)-((long)taillen + (long)MAGIC_COOKIE_SIZE + 3);
+        taillen = *((bnd_unsigned *)&(buff[sizeof( MAGIC_COOKIE )]));
+        shift = -((long)taillen + (long)sizeof( buff ));
         tocopy += shift;
     }
     i = lseek( h, 0, SEEK_SET );
@@ -201,13 +192,11 @@ void AddDataToEXE( char *exe, char *buffer, unsigned short len, unsigned long to
         if( i != len ) {
             Abort( "write 1 error on \"%s\"", exe );
         }
-        i = write( newh, magic_cookie, MAGIC_COOKIE_SIZE + 1 );
-        if( i != MAGIC_COOKIE_SIZE + 1 ) {
+        strcpy( buff, MAGIC_COOKIE );
+        *((bnd_unsigned *)&(buff[sizeof( MAGIC_COOKIE )])) = len;
+        i = write( newh, buff, sizeof( buff ) );
+        if( i != sizeof( buff ) ) {
             Abort( "write 2 error on \"%s\"", exe );
-        }
-        i = write( newh, &len, sizeof( short ) );
-        if( i != sizeof( short ) ) {
-            Abort( "write 3 error on \"%s\"", exe );
         }
     }
     close( newh );
@@ -257,9 +246,10 @@ void Usage( char *msg )
     if( msg != NULL ) {
         printf( "%s\n", msg );
     }
-    printf( "Usage: edbind [-?sq] [-d<datfile>] <exename>\n" );
+    printf( "Usage: edbind [-?sq] [-d<datfile>] <exename> <datanames> ...\n" );
     if( msg == NULL ) {
         printf( "\t<exename>\t     executable to add editor data to\n" );
+        printf( "\t<datanames>\t     editor data file to bind\n" );
         printf( "\tOptions -?:\t     display this message\n" );
         printf( "\t\t-s:\t     strip info from executable\n" );
         printf( "\t\t-q:\t     run quietly\n" );
@@ -325,7 +315,8 @@ int main( int argc, char *argv[] )
     char                *buff = NULL;
     char                *buff2, *buff3;
     char                *buffn, *buffs;
-    int                 i, cnt, bytes, lines, j, k, sl;
+    int                 i, bytes, lines, j, k, sl;
+    unsigned            cnt;
     FILE                *f;
     struct stat         fs;
     char                drive[_MAX_DRIVE], dir[_MAX_DIR];
@@ -333,6 +324,11 @@ int main( int argc, char *argv[] )
     char                path[_MAX_PATH];
     char                tmppath[_MAX_PATH];
     char                tmpfname[_MAX_FNAME], tmpext[_MAX_EXT];
+    short               FileCount;
+    long                *index;
+    short               *entries;
+    char                *dats[MAX_DATA_FILES];
+    char                *bindfile = "edbind.dat";
 
     j = argc - 1;
     while( j > 0 ) {
@@ -384,47 +380,62 @@ int main( int argc, char *argv[] )
         buff = MyAlloc( 65000 );
         buff2 = MyAlloc( 32000 );
         buff3 = MyAlloc( MAX_LINE_LEN );
+        FileCount = 0;
 
-        /*
-         * read in all data files
-         */
-        MyPrintf( "Getting data files from" );
-        f = GetFromEnvAndOpen( bindfile );
-        MyPrintf( "\n" );
-        if( f == NULL ) {
-            Abort( "Could not open %s", bindfile );
+        if( *bindfile != '\0' ) {
+            /*
+             * read in all data files
+             */
+            MyPrintf( "Getting data files from" );
+            f = GetFromEnvAndOpen( bindfile );
+            MyPrintf( "\n" );
+            if( f == NULL ) {
+                Abort( "Could not open %s", bindfile );
+            }
+            while( fgets( buff3, MAX_LINE_LEN, f ) != NULL ) {
+                for( i = strlen( buff3 ); i && isWSorCtrlZ( buff3[i - 1] ); --i ) {
+                    buff3[i - 1] = '\0';
+                }
+                if( buff3[0] == '\0' ) {
+                    continue;
+                }
+                RemoveLeadingSpaces( buff3 );
+                if( buff3[0] == '#' ) {
+                    continue;
+                }
+                dats[FileCount] = MyAlloc( strlen( buff3 ) + 1 );
+                strcpy( dats[FileCount], buff3 );
+                FileCount++;
+                if( FileCount >= MAX_DATA_FILES ) {
+                    Abort( "Too many files to bind!" );
+                }
+            }
+            fclose( f );
         }
-        while( fgets( buff3, MAX_LINE_LEN, f ) != NULL ) {
-            for( i = strlen( buff3 ); i && isWSorCtrlZ( buff3[i - 1] ); --i ) {
-                buff3[i - 1] = '\0';
-            }
-            if( buff3[0] == '\0' ) {
-                continue;
-            }
-            RemoveLeadingSpaces( buff3 );
-            if( buff3[0] == '#' ) {
-                continue;
-            }
-            dats[FileCount] = MyAlloc( strlen( buff3 ) + 1 );
-            strcpy( dats[FileCount], buff3 );
-            FileCount++;
-            if( FileCount >= MAX_DATA_FILES ) {
-                Abort( "Too many files to bind!" );
+        if( argc > 2 ) {
+            MyPrintf( "Getting data files from command line" );
+            for( i = 2; i < argc; ++i ) {
+                dats[FileCount] = MyAlloc( strlen( argv[i] ) + 1 );
+                strcpy( dats[FileCount], argv[i] );
+                FileCount++;
+                if( FileCount >= MAX_DATA_FILES ) {
+                    Abort( "Too many files to bind!" );
+                }
             }
         }
-        fclose( f );
+
         index = MyAlloc( FileCount * sizeof( long ) );
         entries = MyAlloc( FileCount * sizeof( short ) );
 
         buffn = buff;
         cnt = 0;
 
-        *(short *)buffn = FileCount;
-        buffn += sizeof( short );
-        cnt += sizeof( short );
+        *(bnd_unsigned *)buffn = FileCount;
+        buffn += sizeof( bnd_unsigned );
+        cnt += sizeof( bnd_unsigned );
         buffs = buffn;
-        buffn += sizeof( short );
-        cnt += sizeof( short );
+        buffn += sizeof( bnd_unsigned );
+        cnt += sizeof( bnd_unsigned );
         k = 0;
         for( i = 0; i < FileCount; i++ ) {
 //          j = strlen( dats[i] ) + 1;
@@ -437,8 +448,8 @@ int main( int argc, char *argv[] )
             cnt += j;
             k += j;
         }
-        *(short *)buffs = k + 1;    /* size of token list */
-        *buffn = 0;                 /* trailing zero */
+        *(bnd_unsigned *)buffs = k + 1; /* size of token list */
+        *buffn = 0;                     /* trailing zero */
         buffn++;
         cnt++;
         buffs = buffn;
