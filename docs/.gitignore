@@ -5,6 +5,12 @@
 *.idx
 *.kw
 *.LAY
+*.lay
 *.mix
 *.PTF
+*.ptf
 *.tbl
+
+sysusr*.gml
+wgml.bat
+winehc.bat
