@@ -40,15 +40,12 @@
   #define sopen3( a, b, c )     open( a, b )
   #define sopen4( a, b, c, d )  open( a, b, d )
 #endif
+#include "bnddata.h"
 
 #define isWSorCtrlZ( x )    (isspace( x ) || (x == 0x1A))
 
-static char magicCookie[] = "CGEXXX";
-
-#define MAGIC_COOKIE_SIZE sizeof( magicCookie )
-
 static long     *dataOffsets;
-static short    *entryCounts, dataFcnt;
+static short    *entryCounts;
 static char     *dataFnames;
 static long     dataStart;
 
@@ -57,26 +54,29 @@ static long     dataStart;
  */
 void CheckForBoundData( void )
 {
-    int         h, i;
-    char        buff[MAGIC_COOKIE_SIZE + 3], *tmp;
-    short       taillen;
+    int         h;
+    unsigned    i;
+    char        buff[sizeof( MAGIC_COOKIE ) + sizeof( bnd_unsigned )];
+    char        *tmp;
+    unsigned    taillen;
+    unsigned    dataFcnt;
 
     /*
      * get trailer
      */
     h = sopen3( EXEName, O_RDONLY | O_BINARY, SH_COMPAT );
-    lseek( h, -((long) MAGIC_COOKIE_SIZE + 3L), SEEK_END );
-    read( h, buff, 3 + MAGIC_COOKIE_SIZE );
+    lseek( h, -((long)sizeof( buff )), SEEK_END );
+    read( h, buff, sizeof( buff ) );
 
     /*
      * seek to start of data
      */
-    if( strcmp( buff, magicCookie ) ) {
+    if( strcmp( buff, MAGIC_COOKIE ) ) {
         close( h );
         return;
     }
-    taillen = *((short *) &(buff[MAGIC_COOKIE_SIZE + 1]));
-    dataStart = (long) -((long) taillen + (long) MAGIC_COOKIE_SIZE + 3);
+    taillen = *((bnd_unsigned *)&(buff[sizeof( MAGIC_COOKIE )]));
+    dataStart = (long) -((long)taillen + (long)sizeof( buff ));
     lseek( h, dataStart, SEEK_END );
 
     /*
@@ -89,16 +89,16 @@ void CheckForBoundData( void )
     /*
      * get number of files, and get space to store data
      */
-    dataFcnt = *(short *) BndMemory;
+    dataFcnt = *(bnd_unsigned *)BndMemory;
     dataOffsets = MemAlloc( dataFcnt * sizeof( long ) );
     entryCounts = MemAlloc( dataFcnt * sizeof( short ) );
 
     /*
      * get file names
      */
-    tmp = BndMemory + 2;
-    i = *(short *) tmp;
-    tmp += 2;
+    tmp = BndMemory + sizeof( bnd_unsigned );
+    i = *(bnd_unsigned *)tmp;
+    tmp += sizeof( bnd_unsigned );
     dataFnames = MemAlloc( i );
     memcpy( dataFnames, tmp, i );
     tmp += i;
@@ -120,10 +120,10 @@ void CheckForBoundData( void )
  */
 bool SpecialOpen( char *fn, GENERIC_FILE *gf )
 {
-    long        shift = 0;
-    int         h, i;
-    char        a;
-    vi_rc       rc;
+    long            shift = 0;
+    int             h, i;
+    unsigned char   a;
+    vi_rc           rc;
 
     /*
      * process bound file
@@ -153,12 +153,12 @@ bool SpecialOpen( char *fn, GENERIC_FILE *gf )
             } else {
                 shift -= dataStart;
                 gf->data.pos = &BndMemory[shift];
-                a = (int) gf->data.pos[0];
+                a = (unsigned char)gf->data.pos[0];
                 gf->data.pos++;
             }
             gf->gf.a.currline = 0;
             gf->gf.a.maxlines = entryCounts[i];
-            gf->gf.a.length = (int) a;
+            gf->gf.a.length = a;
             return( TRUE );
 
         }
@@ -182,6 +182,7 @@ bool SpecialOpen( char *fn, GENERIC_FILE *gf )
      * process regular file
      */
     gf->type = GF_FILE;
+    gf->gf.a.currline = 0;
     gf->data.f = GetFromEnvAndOpen( fn );
     if( gf->data.f == NULL ) {
         return( FALSE );
@@ -222,6 +223,7 @@ int SpecialFgets( char *buff, int max, GENERIC_FILE *gf )
         if( fgets( buff, max, gf->data.f ) == NULL ) {
             return( -1 );
         }
+        gf->gf.a.currline++;
         for( i = strlen( buff ); i && isWSorCtrlZ( buff[i - 1] ); --i ) {
             buff[i - 1] = '\0';
         }
