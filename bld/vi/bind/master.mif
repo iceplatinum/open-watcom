@@ -1,5 +1,7 @@
 proj_name = edbind
 
+edbind_autodpends = .AUTODEPEND
+
 !include cproj.mif
 !include defrule.mif
 !include deftarg.mif
