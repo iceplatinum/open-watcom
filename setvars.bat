@@ -32,7 +32,9 @@ rem set HHC=hhc
 REM check if DOS is available
 if not '%OS%' == 'Windows_NT' goto dos_ok
 if exist %SystemRoot%\system32\dosx.exe goto dos_ok
-rem set OW_DOSBOX=dosbox
+REM set OW_DOSBOX variables to point to DOSBOX emulator
+REM it must not include any spaces, but it can be LFN
+set OW_DOSBOX=dosbox
 :dos_ok
 
 REM Subdirectory to be used for bootstrapping
