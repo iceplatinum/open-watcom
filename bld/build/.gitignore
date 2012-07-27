@@ -1,0 +1,17 @@
+/axpnt/*
+!/axpnt/readme
+!/axpnt/wlink.lnk
+/bin/*
+!/bin/readme
+!/bin/wlink.lnk
+/binl/*
+!/binl/bootstrp.lnk
+!/binl/readme
+!/binl/wlink.lnk
+/binnt/*
+!/binnt/readme
+!/binnt/wlink.lnk
+/binp/*
+!/binp/readme
+!/binp/wlink.lnk
+

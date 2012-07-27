@@ -1,0 +1,5 @@
+/alias/objs.mif
+/alias/a/*.asm
+/library/*/*/*.def
+/rtdll/*/*/*.dll
+

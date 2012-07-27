@@ -1,2 +1,4 @@
 *.def
 *.dll
+/alias/objs.mif
+/alias/a/*.asm
