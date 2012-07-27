@@ -156,7 +156,7 @@ stkdepth_dir    = $(dev_dir)/stkdepth
 wasm_dir        = $(dev_dir)/wasm
 !endif
 !ifndef wasmtest_dir
-wasmtest_dir    = $(dev_dir)/wasm/test
+wasmtest_dir    = $(dev_dir)/wasmtest
 !endif
 !ifndef hdr_dir
 hdr_dir         = $(dev_dir)/hdr
@@ -486,7 +486,7 @@ stkdepth_dir    = $(dev_dir)\stkdepth
 wasm_dir        = $(dev_dir)\wasm
 !endif
 !ifndef wasmtest_dir
-wasmtest_dir    = $(dev_dir)\wasm\test
+wasmtest_dir    = $(dev_dir)\wasmtest
 !endif
 !ifndef hdr_dir
 hdr_dir         = $(dev_dir)\hdr

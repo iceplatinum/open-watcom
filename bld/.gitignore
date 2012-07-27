@@ -129,11 +129,12 @@
 /w32api/nt/directx/*.h
 /w32api/nt/gl/*.h
 #
-/wasm/test/*/*.dib
-/wasm/test/*/*.dis
-/wasm/test/*/*.OUT
-/wasm/test/*/*.out
-/wasm/test/*/*.sav
+/wasmtest/*.sav
+/wasmtest/*/*.dib
+/wasmtest/*/*.dis
+/wasmtest/*/*.OUT
+/wasmtest/*/*.out
+/wasmtest/*/*.sav
 #
 /wcl/*.owc
 #

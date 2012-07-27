@@ -227,7 +227,7 @@ sub make_test_batch
     print BATCH "cd $OW\ncd bld\ncd ctest\n";
     print BATCH "rm *.log\n";
     print BATCH "wmake -h targ_env_386=cw386\n";
-    print BATCH "cd $OW\ncd bld\ncd wasm\ncd test\n";
+    print BATCH "cd $OW\ncd bld\ncd wasmtest\n";
     print BATCH "rm *.log\n";
     print BATCH "wmake -h targ_env_386=cw386\n";
     print BATCH "cd $OW\ncd bld\ncd f77\ncd regress\n";
@@ -383,7 +383,7 @@ sub run_tests
     print REPORT "\tC++ Compiler    : ";
     if (process_log("$OW\/bld\/plustest\/result.log") ne "success") { $result = "fail"; }
     print REPORT "\tWASM            : ";
-    if (process_log("$OW\/bld\/wasm\/test\/result.log") ne "success") { $result = "fail"; }
+    if (process_log("$OW\/bld\/wasmtest\/result.log") ne "success") { $result = "fail"; }
     print REPORT "\n";
 
     return $result;
