@@ -1,0 +1,6 @@
+/cfg/ide.cfg
+/cfg/*/idex.cfg
+/viper/dos386/*.txt
+/viper/os386/*.txt
+/viper/nt386/*.txt
+/viper/wini86/*.txt
