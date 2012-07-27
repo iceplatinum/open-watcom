@@ -19,10 +19,10 @@ cdsay .
 [ BLOCK <1> rel2 cprel2 ]
 #========================
   [ IFDEF (os_os2 "") <2*> ]
-    <CPCMD> <DEVDIR>/editdll/epm/epmlink.dll            <RELROOT>/binp/dll/epmlink.dll
-    <CPCMD> <DEVDIR>/editdll/epm/epmlink.sym            <RELROOT>/binp/dll/epmlink.sym
-    <CPCMD> <DEVDIR>/editdll/epm/wedit.lib              <RELROOT>/src/editdll/os2/wedit.lib
-    <CPCMD> <DEVDIR>/editdll/epm/wedit.dll              <RELROOT>/src/editdll/os2/wedit.dll
+    <CPCMD> <DEVDIR>/editdll/epm/os2386/epmlink.dll     <RELROOT>/binp/dll/epmlink.dll
+    <CPCMD> <DEVDIR>/editdll/epm/os2386/epmlink.sym     <RELROOT>/binp/dll/epmlink.sym
+    <CPCMD> <DEVDIR>/editdll/epm/os2386/wedit.lib       <RELROOT>/src/editdll/os2/wedit.lib
+    <CPCMD> <DEVDIR>/editdll/epm/os2386/wedit.dll       <RELROOT>/src/editdll/os2/wedit.dll
 
   [ IFDEF (os_win "") <2*> ]
 
