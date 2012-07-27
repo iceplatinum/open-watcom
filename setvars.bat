@@ -5,11 +5,7 @@ REM *****************************************************************
 REM NOTE: Do not use this batch file directly, but copy it and
 REM       modify it as necessary for your own use!!
 
-REM Setup environment variables for Perforce
-set P4PORT=perforce.openwatcom.org:3488
-set P4USER=YourName
-set P4CLIENT=YOURCLIENT
-set P4PASSWD=YourPassword
+REM Setup environment variables for Git
 
 REM Change this to point to your Open Watcom source tree - must be an 8.3 name!
 set OWROOT=d:\ow
@@ -33,6 +29,11 @@ REM Documentation related variables
 REM set appropriate variables to point to Windows help compilers which you have installed
 rem set WIN95HC=hcrtf
 rem set HHC=hhc
+REM check if DOS is available
+if not '%OS%' == 'Windows_NT' goto dos_ok
+if exist %SystemRoot%\system32\dosx.exe goto dos_ok
+rem set OW_DOSBOX=dosbox
+:dos_ok
 
 REM Subdirectory to be used for bootstrapping
 set OBJDIR=bootstrp
