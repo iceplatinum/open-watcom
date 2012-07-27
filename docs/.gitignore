@@ -11,6 +11,8 @@
 *.ptf
 *.tbl
 
+stderr.txt
+stdout.txt
 sysusr*.gml
 wgml.bat
 winehc.bat
@@ -58,6 +60,7 @@ winehc.bat
 
 /ps/*.PS
 /ps/*.ps
+/ps/tmp/*.ps
 
 /win/*.h
 /win/*.hh
