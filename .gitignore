@@ -33,6 +33,8 @@ prebuild
 
 /setvars
 
+/distrib/ow/open-watcom-*
+
 /rel2/
 /pass1/
 /pass2/
