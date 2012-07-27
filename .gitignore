@@ -28,6 +28,9 @@
 *.lk1
 *~
 
+stderr.txt
+stdout.txt
+
 bootstrp
 prebuild
 

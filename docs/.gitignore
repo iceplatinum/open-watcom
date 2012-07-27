@@ -9,21 +9,23 @@
 *.mix
 *.PTF
 *.ptf
-*.tbl
 
-stderr.txt
-stdout.txt
+SYSUSR*.GML
 sysusr*.gml
 wgml.bat
 winehc.bat
+wgmlopts.tmp
+whpcopts.tmp
 
 /dos/*.h
 /dos/*.ib
 /dos/*.ihp
+/dos/*.tbl
 
 /html/*.bmp
 /html/*.h
 /html/*.htm
+/html/*.tbl
 
 /htmlhelp/*.bmp
 /htmlhelp/*.chi
@@ -33,10 +35,10 @@ winehc.bat
 /htmlhelp/*.hhk
 /htmlhelp/*.hhp
 /htmlhelp/*.htm
+/htmlhelp/*.tbl
 /htmlhelp/*/*.bmp
 /htmlhelp/*/*.chi
 /htmlhelp/*/*.chm
-/htmlhelp/*/*.h
 /htmlhelp/*/*.hhc
 /htmlhelp/*/*.hhk
 /htmlhelp/*/*.hhp
@@ -47,11 +49,13 @@ winehc.bat
 /nt/*.hlp
 /nt/*.hpj
 /nt/*.rtf
+/nt/*.tbl
 
 /os2/*.h
 /os2/*.hlp
 /os2/*.inf
 /os2/*.ipf
+/os2/*.tbl
 
 /pdf/*.pdf
 /pdf/*.PS
@@ -68,4 +72,5 @@ winehc.bat
 /win/*.hpj
 /win/*.ph
 /win/*.rtf
+/win/*.tbl
 

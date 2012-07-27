@@ -20,11 +20,6 @@
 #
 /aui/os2*/*.dlg
 #
-/browser/dos386/*.txt
-/browser/os386/*.txt
-/browser/nt386/*.txt
-/browser/wini86/*.txt
-#
 /build/axpnt/*
 !/build/axpnt/readme
 !/build/axpnt/wlink.lnk
@@ -123,10 +118,6 @@
 #
 /viper/cfg/ide.cfg
 /viper/cfg/*/idex.cfg
-/viper/viper/dos386/*.txt
-/viper/viper/os386/*.txt
-/viper/viper/nt386/*.txt
-/viper/viper/wini86/*.txt
 #
 /viprdemo/*/*/*.dll
 #
@@ -157,5 +148,4 @@
 /wl/os2386.dll/*.dll
 #
 /wv/os2/*/*.dlg
-#
 
