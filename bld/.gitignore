@@ -1,7 +1,11 @@
+*.d32
+*.err
 *.exe
 *.lib
+*.lnk
 *.o
 *.[oux]bj
+*.trp
 #
 /as/*/*/as_in.y
 /as/*/*/aslexyy.c

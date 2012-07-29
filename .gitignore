@@ -1,8 +1,6 @@
 *.[cdg]h
-*.d32
 *.dip
 *.elf
-*.err
 *.ext
 *.gpp
 *.grc
@@ -10,7 +8,6 @@
 *.int
 *.lbc
 *.lk1
-*.lnk
 *.lo?
 *.lst
 *.mad
@@ -26,7 +23,6 @@
 *.sym
 *.tmp
 *.trk
-*.trp
 *.u
 *~
 
