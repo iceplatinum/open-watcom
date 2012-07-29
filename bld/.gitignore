@@ -58,6 +58,8 @@
 #
 /ctest/*.out
 /ctest/*.sav
+/ctest/*/*/*.out
+/ctest/*/*/*.sav
 #
 /dip/*/*/*.dll
 #
