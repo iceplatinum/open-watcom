@@ -101,8 +101,12 @@
 /plusplus/*/ytab.c
 /plusplus/*/y.out
 #
+/plustest/*.out
+/plustest/*.sav
 /plustest/*/*/*.out
 /plustest/*/*/*.sav
+/plustest/*/*/*/*.out
+/plustest/*/*/*/*.sav
 #
 /rc/rc/*/ytab2.c
 /rc/rc/*/ytabw.c
