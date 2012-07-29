@@ -10,6 +10,7 @@
 *.PTF
 *.ptf
 
+pdf.bat
 SYSUSR*.GML
 sysusr*.gml
 wgml.bat
