@@ -1,6 +1,7 @@
 *.blt
 *.cn1
 *.cnt
+*.err
 *.GML
 *.idx
 *.kw
