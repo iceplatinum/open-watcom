@@ -124,8 +124,9 @@ sub make_build_batch
     open(INPUT, "$setvars") || die "Unable to open $setvars file.";
     while (<INPUT>) {
         s/\r?\n/\n/;
-        if    (/$setenv OWROOT/i) { print BATCH "$setenv OWROOT=", $OW, "\n"; }
-        elsif (/$setenv WATCOM/i) { print BATCH "$setenv WATCOM=", $WATCOM, "\n"; }
+        if    (/$setenv OWROOT=/i) { print BATCH "$setenv OWROOT=", $OW, "\n"; }
+        elsif (/$setenv WATCOM=/i) { print BATCH "$setenv WATCOM=", $WATCOM, "\n"; }
+        elsif (/$setenv OW_DOSBOX=/i) { print BATCH "$setenv OW_DOSBOX=", $Common::config{"DOSBOX"}, "\n"; }
         else                      { print BATCH; }
     }
     close(INPUT);
@@ -178,8 +179,9 @@ sub make_docs_batch
     open(INPUT, "$setvars") || die "Unable to open $setvars file.";
     while (<INPUT>) {
         s/\r?\n/\n/;
-        if    (/$setenv OWROOT/i) { print BATCH "$setenv OWROOT=", $OW, "\n"; }
-        elsif (/$setenv WATCOM/i) { print BATCH "$setenv WATCOM=", $WATCOM, "\n"; }
+        if    (/$setenv OWROOT=/i) { print BATCH "$setenv OWROOT=", $OW, "\n"; }
+        elsif (/$setenv WATCOM=/i) { print BATCH "$setenv WATCOM=", $WATCOM, "\n"; }
+        elsif (/$setenv OW_DOSBOX=/i) { print BATCH "$setenv OW_DOSBOX=", $Common::config{"DOSBOX"}, "\n"; }
         elsif (/$setenv GHOSTSCRIPTPATH/i) { ; }
         elsif (/$setenv WIN95HC/i) { ; }
         elsif (/$setenv HHC/i)    { ; }
@@ -213,8 +215,9 @@ sub make_test_batch
     open(INPUT, "$setvars") || die "Unable to open $setvars file.";
     while (<INPUT>) {
         s/\r?\n/\n/;
-        if    (/$setenv OWROOT/i) { print BATCH "$setenv OWROOT=", $OW, "\n"; }
-        elsif (/$setenv WATCOM/i) { print BATCH "$setenv WATCOM=", get_reldir(), "\n"; }
+        if    (/$setenv OWROOT=/i) { print BATCH "$setenv OWROOT=", $OW, "\n"; }
+        elsif (/$setenv WATCOM=/i) { print BATCH "$setenv WATCOM=", get_reldir(), "\n"; }
+        elsif (/$setenv OW_DOSBOX=/i) { print BATCH "$setenv OW_DOSBOX=", $Common::config{"DOSBOX"}, "\n"; }
         else                      { print BATCH; }
     }
     close(INPUT);
@@ -300,7 +303,7 @@ sub process_log
                         $result = "fail";      # in case others failed on os2
                     }
                 }
-            }			
+            }                   
             @fields = split;
             $project_name = Common::remove_OWloc($fields[2]);
             $arch_test = "";
