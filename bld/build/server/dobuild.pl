@@ -224,8 +224,8 @@ sub make_test_batch
 
     # Add additional commands to do the testing.
     print BATCH "\n";
-    if ($^O eq "MSWin32") {
-        print BATCH "$setenv EXTRA_ARCH=i86\n\n";
+    if ($^O eq "MSWin32") { 
+        print BATCH "if '%OW_DOSBOX%' == '' $setenv EXTRA_ARCH=i86\n\n";
     }
     print BATCH "cd $OW\ncd bld\ncd ctest\n";
     print BATCH "rm *.log\n";
