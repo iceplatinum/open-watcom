@@ -24,7 +24,7 @@ objs = $(wres_core_objs) $(wres_more_objs)
 
 # options to use
 extra_c_flags = -DMICROSOFT
-!ifdef IS_GUI
+!ifdef is_gui
 extra_c_flags += -DWIN_GUI
 !endif
 

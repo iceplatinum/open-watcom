@@ -6,6 +6,7 @@
 
 !ifeq sys_windowed 1
 gui_type = win
+WINDOWS = 1
 !else
 gui_type = ui
 !endif
