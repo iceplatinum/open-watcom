@@ -31,6 +31,7 @@
 use strict;
 
 use Common;
+use Config;
 
 my(@p4_messages);
 my($OStype);
@@ -59,21 +60,24 @@ if ($^O eq "MSWin32") {
     $OStype = "WIN32";
     $ext    = "bat";
     $setenv = "set";
-    $build_platform = "win32-x86";
 } elsif ($^O eq "linux") {
     $OStype = "UNIX";
     $ext    = "sh";
     $setenv = "export";
-    $build_platform = "linux-x86";
 } elsif ($^O eq "os2") {
     $OStype = "OS2";
     $ext    = "cmd";
     $setenv = "set";
-    $build_platform = "os2-x86";
 } else {
     print "Unsupported or unknown platform '$^O' !\n";
     print "Review dobuild.pl file and fix it for new platform!\n";
     exit 1;
+}
+{
+    my @fields;
+
+    @fields = split /-/, $Config{archname}, 3;
+    $build_platform = "$fields[0]-$fields[1]";
 }
 
 my $build_batch_name     = "$home\/build.$ext";
@@ -485,8 +489,8 @@ if (stat($report_name)) {
     rename $report_name, $bak_name;
 }
 open(REPORT, ">$report_name") || die "Unable to open $report_name file.";
-print REPORT "Open Watcom Build Report (", $build_platform, ")\n";
-print REPORT "=====================================\n\n";
+print REPORT "Open Watcom Build Report (build on ", $build_platform, ")\n";
+print REPORT "================================================\n\n";
 
 # Do a p4 sync to get the latest changes.
 #########################################
