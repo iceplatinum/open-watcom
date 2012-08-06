@@ -1,11 +1,14 @@
 bld_ver      = $(%BLD_VER)
 patch_level  = 0
 lang_root    = $(%WATCOM)
-dev_dir      = $(%DEVDIR)
 !ifdef __UNIX__
+build_dir    = $(%OWROOT)/build
 contrib_dir  = $(%OWROOT)/contrib
+dev_dir      = $(%OWROOT)/bld
 !else
+build_dir    = $(%OWROOT)\build
 contrib_dir  = $(%OWROOT)\contrib
+dev_dir      = $(%OWROOT)\bld
 !endif
 mif_path     = $(dev_dir)/build/local;$(dev_dir)/build/mif
 
