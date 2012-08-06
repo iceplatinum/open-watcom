@@ -60,24 +60,26 @@ if ($^O eq "MSWin32") {
     $OStype = "WIN32";
     $ext    = "bat";
     $setenv = "set";
+    if ($Config{archname} =~ /64/) {
+    	$build_platform = "win32-x64";
+    } else {
+    	$build_platform = "win32-x86";
+    }
+    
 } elsif ($^O eq "linux") {
     $OStype = "UNIX";
     $ext    = "sh";
     $setenv = "export";
+    $build_platform = "linux-x86";
 } elsif ($^O eq "os2") {
     $OStype = "OS2";
     $ext    = "cmd";
     $setenv = "set";
+    $build_platform = "os2-x86";
 } else {
     print "Unsupported or unknown platform '$^O' !\n";
     print "Review dobuild.pl file and fix it for new platform!\n";
     exit 1;
-}
-{
-    my @fields;
-
-    @fields = split /-/, $Config{archname}, 3;
-    $build_platform = "$fields[0]-$fields[1]";
 }
 
 my $build_batch_name     = "$home\/build.$ext";
