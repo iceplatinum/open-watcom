@@ -42,7 +42,7 @@ pre_obj_deps += usage.u
  
 inc_dirs = -I"../h/$(target_cpu)"
 #!ifeq plusplus_trmem 1
-#inc_dirs += -I$(trmem_dir)
+#inc_dirs += -I"$(trmem_dir)"
 #!endif
 inc_dirs += -I"../h"
 inc_dirs += $(cg_inc_dirs)
@@ -397,7 +397,7 @@ target_as_386 = bwasm -zq -3 -w8
 target_as_ppc = wasmppc -zq -w8
  
 xcode$(target_cpu).tmp: $(cc_dir)/a/code$(target_cpu).asm
-    $(target_as_$(target_cpu)) -fo=.obj -I$(watcom_h) $[@
+    $(target_as_$(target_cpu)) -fo=.obj -I"$(watcom_dir)/h" $[@
     $(linker) format dos com op nodefault file code$(target_cpu).obj name $@ disable 1023,1080
  
 ./mkcode.exe: $(cc_dir)/a/mkcode.c

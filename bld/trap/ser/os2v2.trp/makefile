@@ -9,6 +9,6 @@ which = TRAP
 type  = remote_link
 
 extra_objs = seros22.obj
-extra_libs = $(os2386)
+extra_libs = $(dev_dir)/os2api/os2386/os2386.lib
 
 !include $(trap_dir)/master.mif

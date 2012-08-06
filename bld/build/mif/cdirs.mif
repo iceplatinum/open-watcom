@@ -1,7 +1,4 @@
 !ifdef __UNIX__
-!ifndef bre_dir
-bre_dir         = $(dev_dir)/bre
-!endif
 !ifndef cfread_dir
 cfread_dir      = $(dev_dir)/cfread
 !endif
@@ -19,9 +16,6 @@ wjclass_dir     = $(dev_dir)/wjclass
 !endif
 !ifndef brinfo_dir
 brinfo_dir      = $(dev_dir)/brinfo
-!endif
-!ifndef trpr_dir
-trpr_dir        = $(dev_dir)/trpr
 !endif
 !ifndef java_dir
 java_dir        = $(dev_dir)/java
@@ -137,9 +131,6 @@ posix_dir       = $(dev_dir)/posix
 !ifndef rcsdll_dir
 rcsdll_dir      = $(dev_dir)/rcsdll
 !endif
-!ifndef curses_dir
-curses_dir      = $(dev_dir)/curses
-!endif
 !ifndef ncurses_dir
 ncurses_dir     = $(dev_dir)/ncurses
 !endif
@@ -148,9 +139,6 @@ viper_dir       = $(dev_dir)/viper
 !endif
 !ifndef wlink_dir
 wlink_dir       = $(dev_dir)/wl
-!endif
-!ifndef stkdepth_dir
-stkdepth_dir    = $(dev_dir)/stkdepth
 !endif
 !ifndef wasm_dir
 wasm_dir        = $(dev_dir)/wasm
@@ -215,24 +203,6 @@ wres_dir        = $(dev_dir)/wres
 !ifndef wedit_dir
 wedit_dir       = $(dev_dir)/wedit
 !endif
-!ifndef lexlib_dir
-lexlib_dir      = $(dev_dir)/lexlib
-!endif
-!ifndef lexutil_dir
-lexutil_dir     = $(dev_dir)/lexutil
-!endif
-!ifndef saveload_dir
-saveload_dir    = $(dev_dir)/saveload
-!endif
-!ifndef compdll_dir
-compdll_dir     = $(dev_dir)/compdll
-!endif
-!ifndef lexus_dir
-lexus_dir       = $(dev_dir)/lexus
-!endif
-!ifndef pprof_dir
-pprof_dir       = $(dev_dir)/pprof
-!endif
 !ifndef dig_dir
 dig_dir         = $(dev_dir)/dig
 !endif
@@ -272,9 +242,6 @@ wv_dir          = $(dev_dir)/wv
 !ifndef cw_dir
 cw_dir          = $(dev_dir)/causeway
 !endif
-!ifndef pil_dir
-pil_dir         = $(dev_dir)/pil
-!endif
 !ifndef jtools_dir
 jtools_dir      = $(dev_dir)/jtools
 !endif
@@ -287,9 +254,6 @@ cfile_dir       = $(jtools_dir)/cfile
 !ifndef zipfile_dir
 zipfile_dir     = $(jtools_dir)/zipfile
 !endif
-!ifndef mempool_dir
-mempool_dir     = $(dev_dir)/mempool
-!endif
 !ifndef jlib_dir
 jlib_dir        = $(jtools_dir)/jlib
 !endif
@@ -298,15 +262,6 @@ wjitjvm_dir     = $(jit_dir)/jvm
 !endif
 !ifndef wjitmsvm_dir
 wjitmsvm_dir    = $(jit_dir)/msvm
-!endif
-!ifndef willows_dir
-willows_dir     = $(dev_dir)/willows
-!endif
-!ifndef wgif2bmp_dir
-wgif2bmp_dir    = $(dev_dir)/imgtools/wgif2bmp
-!endif
-!ifndef debugger_dir
-debugger_dir    = $(dev_dir)/debugger
 !endif
 !ifndef re2c_dir
 re2c_dir        = $(dev_dir)/re2c
@@ -326,12 +281,15 @@ zlib_dir        = $(contrib_dir)/zlib
 !ifndef awk_dir
 awk_dir         = $(contrib_dir)/awk
 !endif
+!ifndef emu87_dir
+emu87_dir       = $(dev_dir)/emu86
+!endif
+!ifndef emu387_dir
+emu387_dir      = $(dev_dir)/emu
+!endif
 
 !else
 
-!ifndef bre_dir
-bre_dir         = $(dev_dir)\bre
-!endif
 !ifndef cfread_dir
 cfread_dir      = $(dev_dir)\cfread
 !endif
@@ -349,9 +307,6 @@ wjclass_dir     = $(dev_dir)\wjclass
 !endif
 !ifndef brinfo_dir
 brinfo_dir      = $(dev_dir)\brinfo
-!endif
-!ifndef trpr_dir
-trpr_dir        = $(dev_dir)\trpr
 !endif
 !ifndef java_dir
 java_dir        = $(dev_dir)\java
@@ -467,20 +422,14 @@ posix_dir       = $(dev_dir)\posix
 !ifndef rcsdll_dir
 rcsdll_dir      = $(dev_dir)\rcsdll
 !endif
-!ifndef curses_dir
-curses_dir      = $(dev_dir)\curses
-!endif
 !ifndef ncurses_dir
-ncurses_dir      = $(dev_dir)\ncurses
+ncurses_dir     = $(dev_dir)\ncurses
 !endif
 !ifndef viper_dir
 viper_dir       = $(dev_dir)\viper
 !endif
 !ifndef wlink_dir
 wlink_dir       = $(dev_dir)\wl
-!endif
-!ifndef stkdepth_dir
-stkdepth_dir    = $(dev_dir)\stkdepth
 !endif
 !ifndef wasm_dir
 wasm_dir        = $(dev_dir)\wasm
@@ -504,7 +453,7 @@ linktest_dir    = $(dev_dir)\linktest
 f77_dir         = $(dev_dir)\f77
 !endif
 !ifndef ftest_dir
-ftest_dir         = $(dev_dir)\f77\regress
+ftest_dir       = $(dev_dir)\f77\regress
 !endif
 !ifndef clib_dir
 clib_dir        = $(dev_dir)\clib
@@ -545,24 +494,6 @@ wres_dir        = $(dev_dir)\wres
 !ifndef wedit_dir
 wedit_dir       = $(dev_dir)\wedit
 !endif
-!ifndef lexlib_dir
-lexlib_dir      = $(dev_dir)\lexlib
-!endif
-!ifndef lexutil_dir
-lexutil_dir     = $(dev_dir)\lexutil
-!endif
-!ifndef saveload_dir
-saveload_dir    = $(dev_dir)\saveload
-!endif
-!ifndef compdll_dir
-compdll_dir     = $(dev_dir)\compdll
-!endif
-!ifndef lexus_dir
-lexus_dir       = $(dev_dir)\lexus
-!endif
-!ifndef pprof_dir
-pprof_dir       = $(dev_dir)\pprof
-!endif
 !ifndef dig_dir
 dig_dir         = $(dev_dir)\dig
 !endif
@@ -599,9 +530,6 @@ help_dir        = $(dev_dir)\help
 !ifndef wv_dir
 wv_dir          = $(dev_dir)\wv
 !endif
-!ifndef pil_dir
-pil_dir         = $(dev_dir)\pil
-!endif
 !ifndef jtools_dir
 jtools_dir      = $(dev_dir)\jtools
 !endif
@@ -614,9 +542,6 @@ cfile_dir       = $(jtools_dir)\cfile
 !ifndef zipfile_dir
 zipfile_dir     = $(jtools_dir)\zipfile
 !endif
-!ifndef mempool_dir
-mempool_dir     = $(dev_dir)\mempool
-!endif
 !ifndef jlib_dir
 jlib_dir        = $(jtools_dir)\jlib
 !endif
@@ -625,15 +550,6 @@ wjitjvm_dir     = $(jit_dir)\jvm
 !endif
 !ifndef wjitmsvm_dir
 wjitmsvm_dir    = $(jit_dir)\msvm
-!endif
-!ifndef willows_dir
-willows_dir     = $(dev_dir)\willows
-!endif
-!ifndef wgif2bmp_dir
-wgif2bmp_dir    = $(dev_dir)\imgtools\wgif2bmp
-!endif
-!ifndef debugger_dir
-debugger_dir    = $(dev_dir)\debugger
 !endif
 !ifndef re2c_dir
 re2c_dir        = $(dev_dir)\re2c
@@ -655,6 +571,12 @@ zlib_dir        = $(contrib_dir)\zlib
 !endif
 !ifndef awk_dir
 awk_dir         = $(contrib_dir)\awk
+!endif
+!ifndef emu87_dir
+emu87_dir       = $(dev_dir)\emu86
+!endif
+!ifndef emu387_dir
+emu387_dir      = $(dev_dir)\emu
 !endif
 
 !endif

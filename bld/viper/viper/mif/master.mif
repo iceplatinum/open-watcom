@@ -75,10 +75,10 @@ all: $(prereq_ide_h) $(name).exe
 
 $(name).exe : $(OBJECTS) $(LIBS) viper.res $(version_res_$(host_os)_$(host_cpu))
         %create $(name).lnk
-        %append $(name).lnk $(lflags)
-        %append $(name).lnk op map, de $(description)
-        %append $(name).lnk f {$(OBJECTS)}
-        %append $(name).lnk lib {$(LIBS)}	
+        @%append $(name).lnk $(lflags)
+        @%append $(name).lnk op map, de $(description)
+        @%append $(name).lnk f {$(OBJECTS)}
+        @%append $(name).lnk lib {$(LIBS)}	
         $(linker) name $(name) @$(name).lnk
 !ifdef version_res_$(host_os)_$(host_cpu)
         $(rc) -k viper.res $^@ -fr=$(version_res_$(host_os)_$(host_cpu))

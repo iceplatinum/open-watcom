@@ -36,7 +36,7 @@ extra_c_flags_movldbg  = -I"$(dig_dir)/h" -DOVL_WHOOSH -DOVL_MULTITHREAD
 
 extra_c_flags_dovlboth = -DOVL_DEBUG
 
-extra_a_flags = -Fo=$^@ -i$(watcom_h) -i"../h" -nc=_OVLCODE -nt=_TEXT
+extra_a_flags = -Fo=$^@ -i"$(watcom_dir)/h" -i"../h" -nc=_OVLCODE -nt=_TEXT
 
 extra_a_flags_ovldata  =
 extra_a_flags_dovldata = -DOVL_DEBUG
@@ -78,8 +78,8 @@ dovln.lib : dnovlldr.obj $(nobjs) $(commobjs) $(debugobjs)
 dovlmt.lib : dmovlldr.obj $(mtobjs) $(commobjs) $(debugobjs)
     @%make makedbglib
 
-.h : $(watcom_h)
-.inc : $(watcom_h)
+.h : $(watcom_dir)/h
+.inc : $(watcom_dir)/h
 
 dsovlldr.obj : ovlldr.c $($(proj_name)_autodepends)
     $(cc) $(cflags) $(extra_c_flags_$^&) $[@

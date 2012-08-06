@@ -27,7 +27,7 @@ wdpmhook.dll: pmhook.obj
     @%append $(tmplnk) debug all op symf
     @%append $(tmplnk) option map
     @%append $(tmplnk) file pmhook.obj
-    @%append $(tmplnk) library $(os2386)
+    @%append $(tmplnk) library $(dev_dir)/os2api/os2386/os2386.lib
     @%append $(tmplnk) export SendMsgHookProc.1,SetHmqDebugee.2
     $(linker) @$(tmplnk)
 
@@ -38,7 +38,7 @@ wdpmhelp.exe: _err.gh _jerr.gh pmhelp.obj pmhelp.res
     @%append $(tmplnk) import WinLockInput PMMERGE.5225
     @%append $(tmplnk) import WinThreadAssocQueue PMMERGE.5398
     @%append $(tmplnk) file pmhelp.obj
-    @%append $(tmplnk) library os2386.lib
+    @%append $(tmplnk) library $(dev_dir)/os2api/os2386/os2386.lib
     @%append $(tmplnk) option modname=wdpmhelp
     @%append $(tmplnk) option description $(description)
     $(linker) @$(tmplnk)

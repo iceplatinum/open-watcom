@@ -259,7 +259,7 @@ target_as_ppc   = wasppc -zq -w8
 target_as_mps   = wasmps -zq -w8
 
 xcode$(target_cpu).tmp: ../a/code$(target_cpu).asm
-        $(target_as_$(target_cpu)) -I"$(watcom_h)" -fo=.obj $[@
+        $(target_as_$(target_cpu)) -I"$(watcom_dir)/h" -fo=.obj $[@
         $(linker) format dos com op nodefault file code$(target_cpu).obj name $@ disable 1023,1080
 
 ./mkcode.exe: ../a/mkcode.c
