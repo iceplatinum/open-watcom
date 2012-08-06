@@ -25,7 +25,7 @@ inc_dirs = -I"../../pmake" -I"../../posix/h"
 
 sys_dos   = sys.obj sysdos.obj sysdoscd.obj
 sys_os2   = sys.obj sysos2.obj sysdoscd.obj
-sys_nt    = sys.obj sysnt.obj  sysdoscd.obj
+sys_nt    = sysnt.obj  sysdoscd.obj
 sys_linux = sys.obj sysposix.obj
 
 extra_c_flags = -D__OS_$(host_os)__ -DSTANDALONE_RX
