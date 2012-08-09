@@ -1,4 +1,3 @@
-#pmake: build lcl os_os2 cpu_386 cpu_386 trap x86
 
 host_os  = os2
 host_cpu = 386
@@ -35,7 +34,7 @@ extra_linker = &
         imp DoReadXMMRegs_ wdsplice                    &
         imp DoWriteXMMRegs_ wdsplice                   &
         imp _XferBuff wdsplice, DoDupFile_ wdsplice    &
-        lib $(dev_dir)/os2api/os2386/os2386.lib, $(dev_dir)/os2api/os2286/os2.lib
+        library $(lang_root)/lib286/os2/os2.lib
 
 !include $(trap_dir)/lcl/lcl.mif
 !include $(trap_dir)/master.mif

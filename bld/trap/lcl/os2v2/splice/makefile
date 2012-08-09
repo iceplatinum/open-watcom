@@ -20,4 +20,4 @@ inc_dirs = -I"$(dig_dir)/h"
 .c: ../c
 
 wdsplice.dll : $(objs)
-    $(linker) $(lflags) name $@ file { $< } l $(dev_dir)/os2api/os2386/os2386.lib
+    $(linker) $(lflags) name $@ file { $< }
