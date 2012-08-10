@@ -102,8 +102,9 @@
 /pbide/wig/wini86.dll/*.dll
 #
 /plusplus/*/*.dll
-/plusplus/*/ytab.c
 /plusplus/*/y.out
+/plusplus/*/ytab.c
+/plusplus/*/ytab.h
 #
 /plustest/*.out
 /plustest/*.sav
