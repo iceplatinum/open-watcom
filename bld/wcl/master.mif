@@ -35,7 +35,9 @@ extra_l_flags = op map
 
 # systems where version resources must be added to .EXE
 !ifndef bootstrap
+!ifndef prebuild
 version_res_nt_386 = exever.res
+!endif
 !endif
 
 $(name).exe : $(extra_deps) $(objs) $(version_res_$(host_os)_$(host_cpu))
