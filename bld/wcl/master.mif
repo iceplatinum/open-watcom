@@ -28,6 +28,8 @@ extra_deps = owcchelp.gh
 
 !include trmem.mif
 
+inc_dirs = -I"../../h"
+
 extra_c_flags_target_i86 = -DWCLI86
 extra_c_flags_target_386 = -DWCL386
 extra_c_flags_target_axp = -DWCLAXP
@@ -44,7 +46,7 @@ extra_c_flags_trmem = $(trmem_cflags)
 
 extra_l_flags = op map
 
-.c: ../c;../../c;$(posix_dir)/misc;$(watcom_dir)/c;$(trmem_dir)
+.c: ../../c;$(posix_dir)/misc;$(watcom_dir)/c;$(trmem_dir)
 
 # systems where version resources must be added to .EXE
 !ifndef prebuild
@@ -57,7 +59,8 @@ $(name) : $(extra_deps) $(objs) $(version_res_$(host_os)_$(host_cpu))
         $(rc) -k $(version_res_$(host_os)_$(host_cpu)) $^@
 !endif
 
+verrc_exe_skel = ../../exever.rc
 !include verrc.mif
 
-owcchelp.gh: ../owcchelp.sp
+owcchelp.gh: ../../owcchelp.sp
         wsplice "-f\"%s\"," $< $@
